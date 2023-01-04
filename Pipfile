@@ -8,6 +8,10 @@ selenium = "*"
 pandas = "*"
 google-cloud-storage = "*"
 apache-airflow = "*"
+fastparquet = "*"
+python-dotenv = "*"
+pyarrow = "*"
+pytz = "*"
 
 [dev-packages]
 

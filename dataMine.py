@@ -45,7 +45,7 @@ def download_csv_raw(fromDate,toDate):
     driver.find_element(By.XPATH,
         '//*[@id="HomeLoginButton"]'
     ).click()
-    time.sleep(10)
+    time.sleep(15)
 
     # Navigating to download prompt
     driver.find_element(By.XPATH,
