@@ -5,9 +5,11 @@ from dotenv import load_dotenv
 from google.cloud import storage
 
 # alternately, just load_dotenv() as it's in the same directory
+#another alternate is to import find_dotenv, then add pass that function as a
+#parameter for load_dotenv()
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
-GCProject = os.environ.get('GCLOUD_PROJECT')
+GCProject = os.getenv('GCLOUD_PROJECT')
 
 bucketName = 'electric-usage-files'
 #localPathToFile = '/Users/kevinrhodes/Downloads/SCE_Usage_8013433518_01-02-23_to_01-02-23.csv'

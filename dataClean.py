@@ -1,10 +1,8 @@
 import pandas as pd
 
 import os
-import csv
 import glob
 from datetime import datetime,timedelta
-from pytz import timezone
 
 # Suppress future warnings from pandas
 import warnings

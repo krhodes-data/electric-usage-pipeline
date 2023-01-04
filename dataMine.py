@@ -4,6 +4,8 @@ import json
 import glob
 import os
 
+from dotenv import load_dotenv
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -11,14 +13,11 @@ from selenium.webdriver.support.ui import Select,WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver import ActionChains
 
+load_dotenv()
 webpage = 'https://www.sce.com/'
 
-# Temporary credential protection
-credPath = 'creds.json'
-with open(credPath) as c:
-    creds = json.load(c)
-username = creds['username']
-password = creds['password']
+username = os.getenv("USERNAME")
+password = os.getenv("PASSWORD")
 
 # To and from dates; formmated for text input on SCE website
 # dates are the currently the same as it will pull just the singular day that way
