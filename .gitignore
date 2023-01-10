@@ -1,0 +1,12 @@
+.env
+chromedriver
+geckodriver
+geckodriver.log
+
+
+airflow/airflow.db
+airflow/logs
+
+.DS_Store
+
+*.json
