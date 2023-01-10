@@ -13,21 +13,22 @@ from selenium.webdriver.support.ui import Select,WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver import ActionChains
 
-load_dotenv()
-webpage = 'https://www.sce.com/'
+def download_csv_raw():
 
-username = os.getenv("USERNAME")
-password = os.getenv("PASSWORD")
+    load_dotenv()
 
-# To and from dates; formmated for text input on SCE website
-# dates are the currently the same as it will pull just the singular day that way
-fromDateFull = datetime.date(datetime.now()) - timedelta(days=1) # yesterday
-fromDate = fromDateFull.strftime("%m%d%y")
-toDateFull = datetime.date(datetime.now()) - timedelta(days=1) # also yesterday
-toDate = toDateFull.strftime("%m%d%y")
+    webpage = 'https://www.sce.com/'
+    username = os.getenv("USERNAME")
+    password = os.getenv("PASSWORD")
 
+    # To and from dates; formmated for text input on SCE website
+    # dates are the currently the same as it will pull just the singular day that way
+    fromDateFull = datetime.date(datetime.now()) - timedelta(days=1) # yesterday
+    fromDate = fromDateFull.strftime("%m%d%y")
+    toDateFull = datetime.date(datetime.now()) - timedelta(days=1) # also yesterday
+    toDate = toDateFull.strftime("%m%d%y")
 
-def download_csv_raw(fromDate,toDate):
+    # Instantiate chromedriver
     chrome_options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(options=chrome_options)
 
@@ -113,8 +114,7 @@ def download_csv_raw(fromDate,toDate):
     #driver.close()
     driver.quit()
 
-# Verify file was downloaded
-
+    # Verify file was downloaded
     keyword = "SCE_Usage"
     downloadPath = '/Users/kevinrhodes/Downloads/'
     files = glob.glob(downloadPath+"*.csv")
@@ -124,21 +124,5 @@ def download_csv_raw(fromDate,toDate):
     print(latestFile)
 
 
-
-
 # Run script for testing
-download_csv_raw(fromDate,toDate)
-
-
-'''
-#Basic Selenium:
-driver = webdriver.Firefox()
-driver.get("http://www.python.org")
-assert "Python" in driver.title
-elem = driver.find_element(By.NAME, "q")
-elem.clear()
-elem.send_keys("pycon")
-elem.send_keys(Keys.RETURN)
-assert "No results found." not in driver.page_source
-driver.close()
-'''
+#download_csv_raw(fromDate,toDate)

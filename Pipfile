@@ -7,11 +7,11 @@ name = "pypi"
 selenium = "*"
 pandas = "*"
 google-cloud-storage = "*"
-apache-airflow = "*"
 fastparquet = "*"
 python-dotenv = "*"
 pyarrow = "*"
 pytz = "*"
+apache-airflow = "==2.5.0"
 
 [dev-packages]
 

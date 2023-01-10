@@ -1,0 +1,30 @@
+# To set up a new airflow instance in a virtual environment
+
+cd /path/to/my_project
+# Creates venv with python 3.7 
+pipenv install --python=3.7 Flask==1.0.3 apache-airflow==1.10.3
+# Set home for airflow in a root of your project (specified in .env file)
+echo "AIRFLOW_HOME=$(pwd)/airflow" >> .env
+#side note: ${} is used for evaluating an existing variable in the same manner
+# Enters created venv and loads content of .env file 
+pipenv shell
+# Initialize airflow
+airflow db init
+mkdir -p ${AIRFLOW_HOME}/dags/
+
+#For finding where application credentials are being called from
+echo $GOOGLE_APPLICATION_CREDENTIALS
+#to reset the ADC, use the following:
+gcloud auth application-default login
+
+
+# For failing task due to return code Negsignal.SIGSEGV - https://github.com/apache/airflow/discussions/24463
+Add the following environment variable
+NO_PROXY=* airflow standalone
+Might be for local development only
+
+
+# Python packages
+creating a blank __init__.py file in the directory is valid (maybe not best practice?)
+Adding that directory to PYTHONPATH environment variable allows for the child object files
+to be used as packages
